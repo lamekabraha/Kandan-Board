@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\KandanBoard",
+    "\\KandanBoard\\KandanBoard",
+    "\\KandanBoard\\KandanBoard\\models",
+    "\\KandanBoard\\models"
   ],
+  "SelectedNode": "\\KandanBoard\\KandanBoard\\models\\KandanBoard.cs",
   "PreviewInSolutionExplorer": false
 }

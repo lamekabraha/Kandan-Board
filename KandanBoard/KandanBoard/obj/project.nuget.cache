@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Abgd3iPcINw=",
+  "dgSpecHash": "hhgLPXEZFiU=",
   "success": true,
   "projectFilePath": "C:\\Users\\lamek\\OneDrive - Sheffield Hallam University\\year2\\system_programming\\Assignment\\Kandan-Board\\KandanBoard\\KandanBoard\\KandanBoard.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\lamek\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
