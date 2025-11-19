@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using KandanBoard.models;
+using KandanBoard.managers;
 
 
 namespace KandanBoard
@@ -10,19 +12,29 @@ namespace KandanBoard
         static void Main()
         {
             Console.Clear();
-            //Console.Title = "Kandan Board";
-            //Console.WriteLine("\n\n--------------------Kandan Board--------------------");
+            //UserManager newUser = new UserManager();
 
-            //Console.WriteLine("\n\nDo you wish to Login or Register?\n\n");
-            //Users newUser = new Users();
+            //newUser.RegisterNewUser();
 
-            //newUser.ListUsers();
+            Console.Write("Register or Login: ");
+            string input = Console.ReadLine();
+            if (input == "register")
+            {
+                UserManager.RegisterNewUser();
+            }
+            if (input == "login")
+            {
+                Console.Write("Email: ");
+                string email = Console.ReadLine();
+                Console.Write("Password: ");
+                string password = Console.ReadLine();
+                User loggedInUser = UserManager.Login(email, password);
 
-            Users user = new Users();
-
-            user.Register();
-
-
+                if (loggedInUser != null)
+                {
+                    Console.Write($"Welcome {loggedInUser.FirstName} {loggedInUser.LastName}");
+                }
+            }
         }
     }
 }
