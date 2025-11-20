@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using KandanBoard.models;
 using KandanBoard.persistence;
+using System.Threading;
 
 namespace KandanBoard.managers
 {
@@ -15,7 +16,7 @@ namespace KandanBoard.managers
             List<User> userList = DataManager.LoadUser();
             string formattedEmail = checkedEmail.ToLower();
 
-            IEnumerable<User> user = userList.Where(user => user.Email == formattedEmail);
+            IEnumerable<User> user = userList.Where(user => user.GetEmail() == formattedEmail);
             bool exists = user.Any();
             return exists;
         }
@@ -33,6 +34,7 @@ namespace KandanBoard.managers
                 email = Console.ReadLine().ToLower();
                 if (EmailExists(email))
                 {
+                    Thread.Sleep(10000); 
                     Console.WriteLine($"ERROR: {email} already exists. Please try using a different email.");
                 }
                 else
@@ -46,7 +48,7 @@ namespace KandanBoard.managers
 
             //get the largest userId integer
             List<User> userList = DataManager.LoadUser();
-            int newUserId = userList.Any() ? userList.Max(u => u.UserId) + 1: 1;
+            int newUserId = userList.Any() ? userList.Max(user => user.GetUserId()) + 1: 1;
 
             User newUser = new User(newUserId, firstName, lastName, email,  password );
 
@@ -56,20 +58,40 @@ namespace KandanBoard.managers
             Console.WriteLine($"SUCCESS! {firstName} {lastName} has been registered as user: {newUserId}");
         }
 
-        public static User Login(string email, string password)
+        public static User Login()
         {
-            List < User > userList = DataManager.LoadUser();
-            string formatEmail = email.ToLower();
-
-            User user = userList.SingleOrDefault(u => u.Email == formatEmail);            
-
-            if (user != null && user.Password == password)
+            while (true)
             {
+                Console.Clear();
+                Console.WriteLine("\n ~~~~~ LOGIN ~~~~~");
+                Console.Write("Email: ");
+                string emailInput = Console.ReadLine();
+                Console.Write("Password: ");
+                string passwordInput = Console.ReadLine();
 
-                return user;
+                try
+                {
+                    List < User > userList = DataManager.LoadUser();
+                    string formatEmail = emailInput.ToLower();
+                    // Using email to parse through userList to find user
+                    User user = userList.SingleOrDefault(user => user.GetEmail() == formatEmail);            
+
+                    if (user != null && user.GetPassword() == passwordInput)
+                    {
+                        return user;
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR: Invalid email or password. Please try again.");
+                        Thread.Sleep(2000);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"ERROR: Failed to find your account: {ex.Message}");
+                    return null;
+                }
             }
-
-            return null;
         }
     }
 }

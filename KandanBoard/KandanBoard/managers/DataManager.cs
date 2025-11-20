@@ -29,11 +29,11 @@ namespace KandanBoard.persistence
                 
                 foreach(User user in userList)
                 {
-                    bw.Write(user.UserId);
-                    bw.Write(user.FirstName);
-                    bw.Write(user.LastName);
-                    bw.Write(user.Email);
-                    bw.Write(user.Password);
+                    bw.Write(user.GetEmail());
+                    bw.Write(user.GetEmail());
+                    bw.Write(user.GetEmail());
+                    bw.Write(user.GetEmail());
+                    bw.Write(user.GetEmail());
                 }
             }
             catch (Exception ex) 
@@ -63,18 +63,18 @@ namespace KandanBoard.persistence
 
             try
             {
-                User user = new User();
                 int userCount = br.ReadInt32();
 
                 // loop through .dat to read user info
                 for (int i=0; i< userCount; i++)
                 {
-                    user.UserId = br.ReadInt32();
-                    user.FirstName = br.ReadString();
-                    user.LastName = br.ReadString();
-                    user.Email = br.ReadString();
-                    user.Password = br.ReadString();
+                    int userId = br.ReadInt32();
+                    string firstName = br.ReadString();
+                    string lastName = br.ReadString();
+                    string email = br.ReadString();
+                    string password = br.ReadString();
 
+                    User user = new User(userId, firstName, lastName, email, password);
                     userList.Add(user);
                 }
 

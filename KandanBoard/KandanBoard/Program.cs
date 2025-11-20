@@ -12,27 +12,26 @@ namespace KandanBoard
         static void Main()
         {
             Console.Clear();
-            //UserManager newUser = new UserManager();
+            Console.SetWindowSize(300, 200);
 
-            //newUser.RegisterNewUser();
-
-            Console.Write("Register or Login: ");
+            Console.WriteLine("\nWelcome to your Kandan Board!");
+            Console.Write("\nRegister or Login: ");
             string input = Console.ReadLine();
-            if (input == "register")
+            Console.WriteLine("Type 'Exit' to return to this point.");
+
+            if (input.ToLower() == "register")
             {
                 UserManager.RegisterNewUser();
             }
-            if (input == "login")
+
+
+            if (input.ToLower() == "login")
             {
-                Console.Write("Email: ");
-                string email = Console.ReadLine();
-                Console.Write("Password: ");
-                string password = Console.ReadLine();
-                User loggedInUser = UserManager.Login(email, password);
+                User loggedInUser = UserManager.Login();
 
                 if (loggedInUser != null)
                 {
-                    Console.Write($"Welcome {loggedInUser.FirstName} {loggedInUser.LastName}");
+                    Console.Write($"Welcome {loggedInUser.GetFirstName()} {loggedInUser.GetLastName()}");
                 }
             }
         }

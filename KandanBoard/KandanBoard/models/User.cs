@@ -5,68 +5,33 @@ namespace KandanBoard.models
 {
     public class User
     {
-        private int UserId;
-        private string FirstName;
-        private string LastName;
-        private string Email;
-        private string Password;
+        private int _userId;
+        private string _firstName;
+        private string _lastName;
+        private string _email;
+        private string _password;
 
-        public User() { }
+        public int    GetUserId()       { return _userId; }
+        public string GetFirstName()    { return _firstName; }
+        public string GetLastName()     { return _lastName; }
+        public string GetEmail()        { return _email; }
+        public string GetPassword()     { return _password; }
 
-        public User(int userId,  string firstName, string lastName, string email, string password)
-        {
-            UserId = userId;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email.ToLower();
-            Password = password;
-        }
+        
+        public void SetUserId(int userId) {  _userId = userId; }
+        public void SetFirstName(string firstName) { _firstName = firstName; }
+        public void SetLastName(string lastName) { _lastName = lastName; }
+        public void SetEmail(string email) { _email = email; }
+        public void SetPassword(string password) { _password = password; }
 
-        public int GetUserId()
+        public User(int userId, string firstName, string lastName, string email, string password)
         {
-            return UserId;
-        }
-        public void SetUserId(int userId)
-        {
-            UserId=userId;
-        }
-
-        public string GetFirstName()
-        {
-            return FirstName;
-        }
-        public void SetFirstName(string firstName)
-        {
-            firstName = FirstName;
+            _userId = userId;
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _password = password;
         }
 
-        public string GetLastName()
-        {
-            return LastName;
-        }
-        public void SetLastName(string lastName)
-        {
-            LastName = lastName;
-        }
-
-        public string GetEmail()
-        {
-            return Email;
-        }
-        public void SetEmail(string email)
-        {
-            Email = email;
-        }
-
-        public string GetPassword()
-        {
-            return Password;
-        }
-        public void SetPassword(string password)
-        {
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = 
-            Password = password;
-        }
     }
 }
