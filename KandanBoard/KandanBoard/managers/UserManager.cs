@@ -23,19 +23,19 @@ namespace KandanBoard.managers
 
         public static void RegisterNewUser()
         {
-            Console.Write("First Name: ");
+            Console.Write(" First Name: ");
             string firstName = Console.ReadLine();
-            Console.Write("Last Name: ");
+            Console.Write(" Last Name: ");
             string lastName = Console.ReadLine();
             string email;
             while (true)
             {
-                Console.Write("Email: ");
+                Console.Write(" Email: ");
                 email = Console.ReadLine().ToLower();
                 if (EmailExists(email))
                 {
                     Thread.Sleep(10000); 
-                    Console.WriteLine($"ERROR: {email} already exists. Please try using a different email.");
+                    Console.WriteLine($"\n ERROR: {email} already exists. Please try using a different email.");
                 }
                 else
                 {
@@ -43,7 +43,7 @@ namespace KandanBoard.managers
                 }
             }
 
-            Console.Write("Password: ");
+            Console.Write(" Password: ");
             string password = Console.ReadLine();
 
             //get the largest userId integer
@@ -53,9 +53,10 @@ namespace KandanBoard.managers
             User newUser = new User(newUserId, firstName, lastName, email,  password );
 
             userList.Add(newUser);
+            
             DataManager.SaveUsers(userList);
 
-            Console.WriteLine($"SUCCESS! {firstName} {lastName} has been registered as user: {newUserId}");
+            Console.Clear();
         }
 
         public static User Login()
@@ -64,9 +65,9 @@ namespace KandanBoard.managers
             {
                 Console.Clear();
                 Console.WriteLine("\n ~~~~~ LOGIN ~~~~~");
-                Console.Write("Email: ");
+                Console.Write("\n Email: ");
                 string emailInput = Console.ReadLine();
-                Console.Write("Password: ");
+                Console.Write("\n Password: ");
                 string passwordInput = Console.ReadLine();
 
                 try
@@ -78,17 +79,18 @@ namespace KandanBoard.managers
 
                     if (user != null && user.GetPassword() == passwordInput)
                     {
+                        Console.Clear();
                         return user;
                     }
                     else
                     {
-                        Console.WriteLine("ERROR: Invalid email or password. Please try again.");
+                        Console.WriteLine("\n ERROR: Invalid email or password. Please try again.");
                         Thread.Sleep(2000);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"ERROR: Failed to find your account: {ex.Message}");
+                    Console.WriteLine($"\n ERROR: Failed to find your account: {ex.Message}");
                     return null;
                 }
             }

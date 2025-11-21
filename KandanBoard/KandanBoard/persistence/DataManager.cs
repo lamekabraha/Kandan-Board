@@ -29,11 +29,11 @@ namespace KandanBoard.persistence
                 
                 foreach(User user in userList)
                 {
+                    bw.Write(user.GetUserId());
+                    bw.Write(user.GetFirstName());
+                    bw.Write(user.GetLastName());
                     bw.Write(user.GetEmail());
-                    bw.Write(user.GetEmail());
-                    bw.Write(user.GetEmail());
-                    bw.Write(user.GetEmail());
-                    bw.Write(user.GetEmail());
+                    bw.Write(user.GetPassword());
                 }
             }
             catch (Exception ex) 
