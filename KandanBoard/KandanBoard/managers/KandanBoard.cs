@@ -4,7 +4,7 @@ using KandanBoard.managers;
 
 namespace KandanBoard
 {
-    public class KandanBoardApp
+    public class KandanBoardApp()
     {
         // Used to hold the state of the user currently logged in
         private User currentUser;
@@ -51,20 +51,23 @@ namespace KandanBoard
                     Console.WriteLine("\n Select a number for an option bellow: ");
                     Console.WriteLine("\n 1. View Board\n 2. Create Task\n 3. Logout\n 4.Exit");
 
-                    int input = Convert.ToInt32(Console.ReadLine());
+                    string input = Console.ReadLine();
                     switch (input)
                     {
-                        //case 1:
-                        //    ViewBoard();
-                        //    break;
-                        //case 2:
-                        //    CreateTask();
-                        //break;
-                        case 3:
+                        case "1":
+                            TaskManager.viewBoard();
+                            break;
+                        case "2":
+                            TaskManager.createTask();
+                            break;
+                        case "3":
                             currentUser = null;
                             break;
-                        case 4:
+                        case "4":
                             Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine(" Please enter a valid option.");
                             break;
                     }
                }
