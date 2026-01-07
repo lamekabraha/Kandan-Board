@@ -1,28 +1,39 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using KandanBoard.models;
+using KandanBoard.managers;
 
 
 namespace KandanBoard
 {
     internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Console.Clear();
-            //Console.Title = "Kandan Board";
-            //Console.WriteLine("\n\n--------------------Kandan Board--------------------");
+            if (args.Length == 2)
+            {
+                Console.WriteLine($"Hello {args[1]} {args[2]}");
+            }
+            else if (args.Length == 4)
+            {
+                // run register
+            }
+            else if (args.Length == 0)
+            {
+                //Console.Clear();
+                //Console.SetWindowSize(300, 200);
 
-            //Console.WriteLine("\n\nDo you wish to Login or Register?\n\n");
-            //Users newUser = new Users();
-
-            //newUser.ListUsers();
-
-            Users user = new Users();
-
-            user.Register();
-
-
+                //Console.WriteLine("\nWelcome to your Kandan Board!");
+                //KandanBoardApp app = new KandanBoardApp();
+                //app.runApp();
+                Console.WriteLine("run login");
+            }
+            else
+            {
+                Console.WriteLine("No Command Line Argument Found");
+                Console.Clear();
+            }
         }
     }
 }
