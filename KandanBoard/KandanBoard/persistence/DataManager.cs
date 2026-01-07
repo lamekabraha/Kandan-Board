@@ -1,4 +1,4 @@
-﻿using KandanBoard.models;
+﻿using KandanBoard.models.UserClass;
 
 namespace KandanBoard.persistence
 {

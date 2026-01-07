@@ -1,6 +1,6 @@
 ﻿using System;
-using KandanBoard.models;
 using KandanBoard.managers;
+using KandanBoard.models.UserClass;
 
 namespace KandanBoard
 {

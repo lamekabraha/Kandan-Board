@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KandanBoard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68e270f16683708259977b7282e8bc68238e290a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c8bedb05fd8c1e9a58913aed9b74bdf9d53eda7")]
 [assembly: System.Reflection.AssemblyProductAttribute("KandanBoard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KandanBoard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

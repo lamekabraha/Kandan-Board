@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using KandanBoard.models;
 using KandanBoard.persistence;
 using System.Threading;
+using KandanBoard.models.UserClass;
 
 namespace KandanBoard.managers
 {
