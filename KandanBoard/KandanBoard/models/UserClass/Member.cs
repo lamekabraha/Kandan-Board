@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace KandanBoard.models.UserClass
 {
-    internal class Member
+    public class Member : User
     {
+        public Member(int userId, string firstName, string lastName, string email, string password) : base(userId, firstName, lastName, email, password)
+        {
+        }
+
+        public override bool CanAssignTask()
+        {
+            return false;
+        }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace KandanBoard.models.UserClass
 {
-    internal class Admin : User
+    public class Admin : User
     {
         public Admin(int userId, string firstName, string lastName, string email, string password) : base(userId, firstName, lastName, email, password)
         {
         }
 
-        public override bool CanDeleteTask()
+        public override bool CanAssignTask()
         {
             return true;
         }

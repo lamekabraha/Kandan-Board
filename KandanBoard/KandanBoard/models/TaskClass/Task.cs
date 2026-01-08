@@ -15,11 +15,11 @@ public class Task
 
     public enum TaskStatus
     {
-        Backlog,
-        ToDo,
-        InProgress,
-        InReview,
-        Done
+        BACKLOG,
+        TODO,
+        INPROGRESS,
+        INREVIEW,
+        DONE
     }
 
     protected int taskId;
@@ -27,6 +27,7 @@ public class Task
     protected string desc;
     protected TaskPriority priority;
     protected TaskStatus status;
+    protected int assignedUserId; // 0 or -1 means unassigned
 
     public int GetTaskId()
     {
@@ -51,6 +52,11 @@ public class Task
     public TaskStatus GetStatus()
     {
         return status;
+    }
+
+    public int GetAssignedUserId()
+    {
+        return assignedUserId;
     }
 
     public void SetTaskId(int taskId)
@@ -78,17 +84,24 @@ public class Task
         this.status = status;
     }
 
-    public Task(int taskId, string title, string desc, TaskPriority priority, TaskStatus status)
+    public void SetAssignedUserId(int userId)
+    {
+        this.assignedUserId = userId;
+    }
+
+    public Task(int taskId, string title, string desc, TaskPriority priority, TaskStatus status, int assignedUserId = 0)
     {
         this.taskId = taskId;
         this.title = title;
         this.desc = desc;
         this.priority = priority;
         this.status = status;
+        this.assignedUserId = assignedUserId;
     }
 
     public virtual string DisplayTask()
     {
-        return $"[Task {taskId}] {title} {status}";
+        string assignedInfo = assignedUserId > 0 ? $"    ASSIGNED TO: User ID {assignedUserId}" : "    ASSIGNED TO: Unassigned";
+        return $"[TASK {taskId}]    TITLE: {title}    STATUS: {status}{assignedInfo}";
     }
 }
