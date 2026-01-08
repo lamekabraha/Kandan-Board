@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace KandanBoard.models.TaskClass
 {
-    public class Bugs : Task
+    public class Bug : Task
     {
-        public string Severity;
+        public enum BugSeverity
+        {
+            Trivial,
+            Minor,
+            Moderate,
+            Major,
+            Critical
+        }
+
+        public BugSeverity Severity;
         public string ReproductionSteps;
 
-        public string GetSeverity()
+        public BugSeverity GetSeverity()
         {
             return Severity;
         }
@@ -21,7 +30,7 @@ namespace KandanBoard.models.TaskClass
             return ReproductionSteps;
         }
 
-        public void SetSeverity(string Severity)
+        public void SetSeverity(BugSeverity Severity)
         {
             this.Severity= Severity;
         }
@@ -31,7 +40,7 @@ namespace KandanBoard.models.TaskClass
             this.ReproductionSteps = ReproductionSteps;
         }
 
-        public Bugs(int taskId, string title, string desc, TaskPriority priority, TaskStatus status, string severity, string reproductionSteps) : base(taskId, title, desc, priority, status)
+        public Bug(int taskId, string title, string desc, TaskPriority priority, TaskStatus status, BugSeverity severity, string reproductionSteps) : base(taskId, title, desc, priority, status)
         {
             Severity = severity;
             ReproductionSteps = reproductionSteps;

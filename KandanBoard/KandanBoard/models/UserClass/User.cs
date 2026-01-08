@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace KandanBoard.models.UserClass
 {
-    public class User
+    public abstract class User //prevents instantiation of the base class, only allows for inheritance
     {
         protected int userId;
         protected string firstName;
@@ -56,5 +56,18 @@ namespace KandanBoard.models.UserClass
             this.password = password;
         }
 
-        public User(int userId, strin)
+        public User(int userId, string firstName, string lastName, string email, string password)
+        {
+            this.userId = userId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+        }
+
+        public virtual bool CanAssignTask()
+        {
+            return false;
+        }
+    }
 }
